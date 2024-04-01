@@ -1,0 +1,127 @@
+//lab13.1
+/*WAP to find the factorial of a number n by writing a recursive function
+for it.*/
+#include <stdio.h>
+
+int fact(int n){
+    if (n==1||n==0)
+        return 1;
+    else
+        return n*fact(n-1);
+}
+int main () {
+    int n;
+    printf("Enter a number:\n");
+    scanf("%d",&n);
+    printf("Factorial of %d = %d",n,fact(n));
+    return 0;
+}
+
+//lab13.2
+/*WAP to calculate GCD of two numbers by using a recursive function
+findGCD.*/
+#include <stdio.h>
+
+int findGCD(int m, int n){
+    if (m%n==0)
+        return n;
+    else
+        return findGCD(n,m%n);
+}
+int main (){
+    int a,b;
+    printf("Enter two numbers:\n");
+    scanf("%d%d",&a,&b);
+    printf("GCD of %d and %d = %d",a,b,findGCD(a,b));
+    return 0;
+}
+
+//lab13.3
+/*WAP by designing a recursive function to calculate the sumof the digits
+of any given integer.*/
+#include<stdio.h>
+int digsum(int n){
+    if (n<10)
+        return n;
+    else
+        return n%10 + digsum(n/10);
+}
+int main () {
+    int n;
+    printf("Enter a number:\n");
+    scanf("%d",&n);
+    printf("Sum of digits of %d is %d",n,digsum(n));
+    return 0;
+}
+
+//lab13.4
+/*WAP by designing a recursive function to print the prime factors of a
+number*/
+#include<stdio.h>
+
+void prime_factors(int n, int div){
+    if (n <= 1)
+        return;
+    if (n% div == 0){
+        printf("%d\t",div);
+        prime_factors(n/div,div);
+    }
+    else{
+        prime_factors(n,div+1);
+    }
+}
+int main (){
+    int n;
+    printf("Enter a number:\n");
+    scanf("%d",&n);
+    printf("Prime factors of %d are: ",n);
+    prime_factors(n,2);
+    return 0;
+}
+
+//lab13.5
+/*WAP to calculate x^y by writing a recursive user defined function.*/
+#include<stdio.h>
+int power(int a,int b){
+    if (b==1)
+        return a;
+    else
+        return a*power(a,b-1);
+}
+int main(){
+    int x,y;
+    printf("Enter the value of x and y:\n");
+    scanf("%d%d",&x,&y);
+    printf("%d to the power %d = %d",x,y,power(x,y));
+    return 0;
+}
+
+//lab13.6
+/*Write a recursive function to search an element in an array using Linear
+Search.*/
+#include <stdio.h>
+
+int linearsearch(int a[],int n,int s){
+    if(a[n]==s)
+        return n;
+    else
+        return linearsearch(a, n - 1, s);
+}
+int main () {
+    int n,x,i;
+    printf("Enter the array size:\n");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the %d elements:\n",n);
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("Enter the searching element:\n");
+    scanf("%d",&x);
+    i=linearsearch(arr, n, x);
+    if(i==-1)
+        printf("Not Found");
+    else
+        printf("Element is present at index %d", i);
+    return 0;
+}
